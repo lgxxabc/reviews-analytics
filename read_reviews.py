@@ -51,3 +51,35 @@ for d in data:
 # this is equals to:
 bad = ['bad' in d for d in data]
 
+#############################################
+# Dictionary: how many 'word' appears
+wc = {}		# word_count
+for d in data:
+	words = d.split()			# default as split('space')  
+	for word in words:
+		if word in wc:
+			wc[word] += 1
+		else:
+			wc[word] = 1		# 增加新的key進入wc字典
+
+for word in wc:					# Only print words appearred > 100 times
+	if wc[word] > 100:
+		print(word, wc[word])
+
+print(len(wc))					# how many words there are in total
+print(wc['Allen'])				# how many 'Allen' in total
+
+# check the frequency of an input word
+while True:
+	word = input('Please enter a word that you want to check: ')
+	if word == 'q':
+		break
+	if word in wc:
+		print(word, 'appearred', wc[word], 'times')
+	else:
+		print('This word never appearred.')	# In case 'KeyError'
+
+print('Thank you for using the checking function.')
+
+
+
